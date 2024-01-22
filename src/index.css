@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 400;
+  line-height: normal;
+  background: #fafafa;
+  background: url('./assets//images//bg-desktop-light.jpg') no-repeat top right fixed;
+  background-size: 100%;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+.boxShadow {
+  box-shadow: 0px 125px 50px -15px rgba(194, 195, 214, 0.5);
+}
+.done {
+  color: #d1d2da;
+  text-decoration-line: line-through;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    font-size: 0.75rem;
+    background: url('./assets//images//bg-mobile-light.jpg') no-repeat top right fixed;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  body {
+    font-size: 1.125rem;
+    background: url('./assets//images//bg-desktop-light.jpg') no-repeat top right fixed;
+  }
+}
