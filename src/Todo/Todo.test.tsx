@@ -165,7 +165,7 @@ describe('Todo', () => {
   });
 
   it('should clear all the completed todos', async () => {
-    const activeFilter = screen.getByText('Clear Completed');
+    const activeFilter = screen.getByTestId('clear-completed-todos');
 
     await act(async () => {
       fireEvent.click(activeFilter);

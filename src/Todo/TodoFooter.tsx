@@ -9,7 +9,7 @@ type TodoFooterProps = {
 
 export default function TodoFooter({ numTodos = 0, filterValue, onFilter, onClearCompleted }: TodoFooterProps) {
   return (
-    <div className='flex justify-center sm:justify-between  p-4 sm:p-7 rounded bg-white'>
+    <div className='flex justify-center sm:justify-between  p-4 sm:p-7 rounded bg-white dark:bg-slate-800'>
       <p className='hidden sm:block'>{numTodos} items left</p>
       <div className='todo-fitler flex gap-4 '>
         <TodoFooterButton

@@ -2,7 +2,7 @@ import Todo from './Todo/Todo';
 
 function App() {
   return (
-    <div className='app background'>
+    <div className='flex justify-center'>
       <Todo />
     </div>
   );

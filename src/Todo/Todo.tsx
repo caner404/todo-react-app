@@ -4,11 +4,14 @@ import TodoList from './TodoList';
 import todoService from './todoService';
 import TodoFooter from './TodoFooter';
 import iconUnChecked from '../assets/images/icon-unchecked.svg';
+import iconMoon from '../assets/images/icon-moon.svg';
+import iconSun from '../assets/images/icon-sun.svg';
 
 export default function Todo() {
   const [todos, setTodos] = useState([] as TodoType[]);
   const [todoInput, setTodoInput] = useState('');
   const [filter, setFilter] = useState(FilterOptions.All);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const filteredTodos = todos.filter((todo) => {
     switch (filter) {
@@ -48,6 +51,19 @@ export default function Todo() {
     setFilter(filterValue);
   }
 
+  function toggleDarkMode() {
+    setIsDarkMode(!isDarkMode);
+  }
+
+  useEffect(() => {
+    const bodyElement = document.body;
+    if (isDarkMode) {
+      bodyElement.classList.add('dark');
+    } else {
+      bodyElement.classList.remove('dark');
+    }
+  }, [isDarkMode]);
+
   useEffect(() => {
     listTodos();
   }, []);
@@ -68,18 +84,22 @@ export default function Todo() {
   );
 
   return (
-    <div className='flex flex-col z-10 m-6 mt-10 sm:mt-16 gap-4 sm:gap-0'>
-      <h1 className='mb-6 sm:mb-12 text-left text-xl sm:text-5xlb tracking-[16px] font-bold uppercase text-white '>
-        Todo
-      </h1>
-      <div className='flex align-middle sm:mb-6 gap-3 sm:gap-6 p-4 sm:p-6 bg-white rounded-md'>
+    <div className='flex flex-col w-[540px] z-10 m-6 mt-10 sm:mt-16 gap-4 sm:gap-0'>
+      <div className='flex justify-between items-center mb-6 sm:mb-12'>
+        <h1 className='text-xl sm:text-5xlb tracking-[16px] font-bold uppercase text-white'>Todo</h1>
+        <button onClick={toggleDarkMode}>
+          <img src={isDarkMode ? iconSun : iconMoon}></img>
+        </button>
+      </div>
+
+      <div className='flex align-middle sm:mb-6 gap-3 sm:gap-6 p-4 sm:p-6 bg-white dark:bg-slate-800 rounded-md'>
         <img
           src={iconUnChecked}
           alt='icon-check'
         />
         <input
           type='text'
-          className='focus:outline-none'
+          className='focus:outline-none dark:bg-slate-800'
           placeholder='Create a new todo...'
           data-testid='add-todo'
           value={todoInput}
@@ -92,6 +112,7 @@ export default function Todo() {
         onDelete={handleDeleteTodo}
         onUpdate={handleCompleteTodo}
         onClearCompleted={handleClearCompletedTodos}
+        isDarkmode={isDarkMode}
       />
       <TodoFooter
         numTodos={filteredTodos.length}
