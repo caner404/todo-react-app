@@ -27,7 +27,6 @@ body {
 }
 
 body.dark {
-  background-color: #171823;
   background: url('./assets//images//bg-desktop-dark.jpg') no-repeat top right fixed #171823;
 }
 

@@ -92,7 +92,7 @@ export default function Todo() {
         </button>
       </div>
 
-      <div className='flex align-middle sm:mb-6 gap-3 sm:gap-6 p-4 sm:p-6 bg-white dark:bg-slate-800 rounded-md'>
+      <div className='flex align-middle sm:mb-6 gap-3 sm:gap-6 p-4 sm:p-6 bg-todoListBackground dark:bg-darkTodoListBackground rounded-md'>
         <IconUnChecked
           iconValues={{
             fillColor: isDarkMode ? 'dark:bg-green-600' : 'bg-white',
@@ -101,7 +101,7 @@ export default function Todo() {
         />
         <input
           type='text'
-          className='focus:outline-none dark:bg-slate-800'
+          className='focus:outline-none bg-todoListBackground dark:bg-darkTodoListBackground'
           placeholder='Create a new todo...'
           data-testid='add-todo'
           value={todoInput}

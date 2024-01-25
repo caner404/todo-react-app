@@ -20,14 +20,14 @@ export function TodoListItem(props: PropsWithChildren<TodoListItemProps>) {
       <p
         onClick={() => props.onUpdate(props.todo.id)}
         data-testid={`todo-text-${props.index}`}
-        className={`self-center text-gray-700 dark:text-gray-400  hover:cursor-pointer ${
+        className={`self-center text-todoListTextColor dark:text-darkTodoListTextColor  hover:cursor-pointer ${
           props.todo.completed ? 'done' : ''
         }`}
       >
         {props.todo.todo}
       </p>
       <button
-        className='ml-auto invisible group-hover:visible '
+        className='ml-auto shrink-0 lg:invisible lg:group-hover:visible '
         data-testid={`delete-button-${props.index}`}
         onClick={() => props.onDelete(props.todo.id)}
       >

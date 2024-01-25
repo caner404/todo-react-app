@@ -16,7 +16,7 @@ type TodoProps = {
 export default function TodoList({ todos, onDelete, onUpdate, onClearCompleted, isDarkMode }: TodoProps) {
   return (
     <ul
-      className='flex flex-col boxShadow w-full bg-white dark:bg-slate-800 rounded-md '
+      className='flex flex-col boxShadow w-full bg-todoListBackground dark:bg-darkTodoListBackground rounded-md '
       data-testid='mainList'
     >
       {todos.map((todo, index) => (
