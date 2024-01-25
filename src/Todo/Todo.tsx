@@ -1,11 +1,11 @@
+import IconUnChecked from '@/svg/IconUnchecked';
 import { FilterOptions, TodoType } from '@/types';
 import { useEffect, useState } from 'react';
-import TodoList from './TodoList';
-import todoService from './todoService';
-import TodoFooter from './TodoFooter';
-import iconUnChecked from '../assets/images/icon-unchecked.svg';
 import iconMoon from '../assets/images/icon-moon.svg';
 import iconSun from '../assets/images/icon-sun.svg';
+import TodoFooter from './TodoFooter';
+import TodoList from './TodoList';
+import todoService from './todoService';
 
 export default function Todo() {
   const [todos, setTodos] = useState([] as TodoType[]);
@@ -93,9 +93,11 @@ export default function Todo() {
       </div>
 
       <div className='flex align-middle sm:mb-6 gap-3 sm:gap-6 p-4 sm:p-6 bg-white dark:bg-slate-800 rounded-md'>
-        <img
-          src={iconUnChecked}
-          alt='icon-check'
+        <IconUnChecked
+          iconValues={{
+            fillColor: isDarkMode ? 'dark:bg-green-600' : 'bg-white',
+            stroke: isDarkMode ? '#393A4B' : '#E3E4F1',
+          }}
         />
         <input
           type='text'
@@ -112,7 +114,7 @@ export default function Todo() {
         onDelete={handleDeleteTodo}
         onUpdate={handleCompleteTodo}
         onClearCompleted={handleClearCompletedTodos}
-        isDarkmode={isDarkMode}
+        isDarkMode={isDarkMode}
       />
       <TodoFooter
         numTodos={filteredTodos.length}

@@ -39,6 +39,10 @@ body.dark .boxShadow {
   color: #d1d2da;
   text-decoration-line: line-through;
 }
+body.dark .done {
+  color: #4d5067;
+  text-decoration-line: line-through;
+}
 
 @media only screen and (max-width: 600px) {
   body,
