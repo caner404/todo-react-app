@@ -15,6 +15,7 @@ describe('TodoFooter', () => {
         numTodos={5}
         onFilter={mockFilterActive}
         onClearCompleted={mockClearCompleted}
+        filterValue={FilterOptions.Active}
       />
     );
     expect(screen.getByText('5 items left')).toBeInTheDocument();
@@ -29,6 +30,7 @@ describe('TodoFooter', () => {
         numTodos={5}
         onFilter={mockFilterActive}
         onClearCompleted={mockClearCompleted}
+        filterValue={FilterOptions.Active}
       />
     );
     const filterActiveBtn = screen.getByText('Active');
@@ -51,6 +53,7 @@ describe('TodoFooter', () => {
         numTodos={5}
         onFilter={mockFilterAll}
         onClearCompleted={mockClearCompleted}
+        filterValue={FilterOptions.All}
       />
     );
     const filterAll = screen.getByText('All');
@@ -72,6 +75,7 @@ describe('TodoFooter', () => {
         numTodos={5}
         onFilter={mockFilterAll}
         onClearCompleted={mockClearCompleted}
+        filterValue={FilterOptions.Completed}
       />
     );
     const filterAll = screen.getByText('Completed');
@@ -92,6 +96,7 @@ describe('TodoFooter', () => {
         numTodos={5}
         onFilter={mockFilterAll}
         onClearCompleted={mockClearCompleted}
+        filterValue={FilterOptions.Active}
       />
     );
     const filterClearCompleted = screen.getByText('Clear Completed');

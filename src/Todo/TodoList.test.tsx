@@ -28,12 +28,15 @@ describe('TodoList', () => {
   ];
   const mockUpdateTodo = vi.fn();
   const mockDeleteTodo = vi.fn();
+  const mockOnClearCompleted = vi.fn();
   beforeEach(() => {
     render(
       <TodoList
         todos={todos}
         onDelete={mockDeleteTodo}
         onUpdate={mockUpdateTodo}
+        isDarkMode={false}
+        onClearCompleted={mockOnClearCompleted}
       />
     );
   });
