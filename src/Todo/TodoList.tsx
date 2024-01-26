@@ -11,9 +11,36 @@ type TodoProps = {
   onUpdate: (id: number) => void;
   onClearCompleted: () => void;
   isDarkMode: boolean;
+  updateTodoOrder: (todos: TodoType[]) => void;
 };
 
-export default function TodoList({ todos, onDelete, onUpdate, onClearCompleted, isDarkMode }: TodoProps) {
+export default function TodoList({
+  todos,
+  onDelete,
+  onUpdate,
+  onClearCompleted,
+  updateTodoOrder,
+  isDarkMode,
+}: TodoProps) {
+  function handleOnDrag(e: React.DragEvent, todoId: number) {
+    e.dataTransfer.setData('todoItem', JSON.stringify(todoId));
+  }
+  function handleOnDrop(e: React.DragEvent, dropId: number) {
+    e.preventDefault();
+    const newTodos = todos.slice();
+    const draggedId = JSON.parse(e.dataTransfer.getData('todoItem')) as number;
+    const draggedTodo = newTodos.filter((todo) => todo.id === draggedId)[0];
+    const dropIndex = newTodos.findIndex((todo) => todo.id === dropId);
+
+    newTodos.splice(newTodos.indexOf(draggedTodo), 1);
+    newTodos.splice(dropIndex, 0, draggedTodo);
+    updateTodoOrder(newTodos);
+  }
+
+  function handleDragOver(e: React.DragEvent) {
+    e.preventDefault();
+  }
+
   return (
     <ul
       className='flex flex-col boxShadow w-full bg-todoListBackground dark:bg-darkTodoListBackground rounded-md '
@@ -26,6 +53,9 @@ export default function TodoList({ todos, onDelete, onUpdate, onClearCompleted, 
           onDelete={onDelete}
           onUpdate={onUpdate}
           key={todo.id}
+          onDrag={handleOnDrag}
+          onDrop={handleOnDrop}
+          onDragOver={handleDragOver}
         >
           {todo.completed ? (
             <IconChecked

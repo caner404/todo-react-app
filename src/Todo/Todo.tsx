@@ -52,6 +52,10 @@ export default function Todo() {
     setFilter(filterValue);
   }
 
+  function handleUpdateTodoOrder(newTodos: TodoType[]) {
+    setTodos([...newTodos]);
+  }
+
   function toggleDarkMode() {
     setIsDarkMode(!isDarkMode);
   }
@@ -115,6 +119,7 @@ export default function Todo() {
         onDelete={handleDeleteTodo}
         onUpdate={handleCompleteTodo}
         onClearCompleted={handleClearCompletedTodos}
+        updateTodoOrder={handleUpdateTodoOrder}
         isDarkMode={isDarkMode}
       />
       <TodoFooter

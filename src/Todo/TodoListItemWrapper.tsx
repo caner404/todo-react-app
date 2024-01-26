@@ -7,11 +7,11 @@ export type TodoListItemWrapperProps = {
 
 export function TodoListItemWrapper(props: PropsWithChildren<TodoListItemWrapperProps>) {
   return (
-    <li
+    <div
       data-testid={props.dataTestid}
       className={`${props.className} p-5 sm:p-6 border-b-2 border-gray-200 dark:border-slate-700 bg-todoListBackground dark:bg-darkTodoListBackground rounded-md`}
     >
       {props.children}
-    </li>
+    </div>
   );
 }
