@@ -57,7 +57,12 @@ Darkmode:
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+With this project, I wanted to gain my first knowledge of React and improve my testing skills at the same time. I came across the concept of "outside-in TDD" a while ago and found it very fascinating. With this project I wanted to improve my understanding of this concept.
+With the concept of outside-in TDD, the first thing you do is write an E2E test that describes the feature you want to implement. This E2E test will fail at the beginning, like any test in TDD.
+To get the E2E test executable correctly, you need to develop the implementation details such as a component. You can also write tests (component testing) for this component.
+A link to the concept with an example in React or Vue is included in the README of the project
+
+Translated with DeepL.com (free version)
 
 ### Useful resources
 
