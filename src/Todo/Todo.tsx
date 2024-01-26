@@ -12,6 +12,7 @@ export default function Todo() {
   const [todoInput, setTodoInput] = useState('');
   const [filter, setFilter] = useState(FilterOptions.All);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const numTodosLeft = todos.filter((todo) => !todo.completed).length;
 
   const filteredTodos = todos.filter((todo) => {
     switch (filter) {
@@ -101,7 +102,7 @@ export default function Todo() {
         />
         <input
           type='text'
-          className='focus:outline-none bg-todoListBackground dark:bg-darkTodoListBackground'
+          className='focus:outline-none bg-todoListBackground dark:bg-darkTodoListBackground text-todoListTextColor dark:text-darkTodoListTextColor'
           placeholder='Create a new todo...'
           data-testid='add-todo'
           value={todoInput}
@@ -117,7 +118,7 @@ export default function Todo() {
         isDarkMode={isDarkMode}
       />
       <TodoFooter
-        numTodos={filteredTodos.length}
+        numTodos={numTodosLeft}
         filterValue={filter}
         onFilter={handleFilter}
         onClearCompleted={handleClearCompletedTodos}

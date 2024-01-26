@@ -45,7 +45,7 @@ export default function TodoList({ todos, onDelete, onUpdate, onClearCompleted, 
         </TodoListItem>
       ))}
       <TodoListItemWrapper className='sm:hidden flex justify-between align-middle'>
-        <p>{todos.length} items left</p>
+        <p>{todos.filter((todo) => !todo.completed).length} items left</p>
         <TodoFooterButton
           onClickHandler={onClearCompleted}
           isActive={false}
