@@ -4,12 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-}
 body,
 body.dark {
+  display: flex;
+  justify-content: center;
   min-height: 100vh;
   margin: 0;
   font-family: 'Josefin Sans', sans-serif;
@@ -50,9 +48,11 @@ body.dark .done {
   }
   body {
     background: url('./assets//images//bg-mobile-light.jpg') no-repeat top right fixed #fafafa;
+    background-size: 100% auto;
   }
   body.dark {
     background: url('./assets//images//bg-mobile-dark.jpg') no-repeat top right fixed #171823;
+    background-size: 100% auto;
   }
 }
 

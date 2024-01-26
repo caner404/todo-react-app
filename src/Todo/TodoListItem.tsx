@@ -37,6 +37,7 @@ export function TodoListItem(props: PropsWithChildren<TodoListItemProps>) {
           className='ml-auto shrink-0 lg:invisible lg:group-hover:visible '
           data-testid={`delete-button-${props.index}`}
           onClick={() => props.onDelete(props.todo.id)}
+          aria-label='delete a todo'
         >
           <img src={iconCross} />
         </button>

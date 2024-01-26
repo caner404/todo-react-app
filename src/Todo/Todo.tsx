@@ -1,17 +1,19 @@
 import IconUnChecked from '@/svg/IconUnchecked';
 import { FilterOptions, TodoType } from '@/types';
 import { useEffect, useState } from 'react';
-import iconMoon from '../assets/images/icon-moon.svg';
-import iconSun from '../assets/images/icon-sun.svg';
+
 import TodoFooter from './TodoFooter';
 import TodoList from './TodoList';
 import todoService from './todoService';
 
-export default function Todo() {
+type TodoProps = {
+  isDarkMode: boolean;
+};
+
+export default function Todo({ isDarkMode }: TodoProps) {
   const [todos, setTodos] = useState([] as TodoType[]);
   const [todoInput, setTodoInput] = useState('');
   const [filter, setFilter] = useState(FilterOptions.All);
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const numTodosLeft = todos.filter((todo) => !todo.completed).length;
 
   const filteredTodos = todos.filter((todo) => {
@@ -56,10 +58,6 @@ export default function Todo() {
     setTodos([...newTodos]);
   }
 
-  function toggleDarkMode() {
-    setIsDarkMode(!isDarkMode);
-  }
-
   useEffect(() => {
     const bodyElement = document.body;
     if (isDarkMode) {
@@ -89,14 +87,7 @@ export default function Todo() {
   );
 
   return (
-    <div className='flex flex-col w-[540px] z-10 m-6 mt-10 sm:mt-16 gap-4 sm:gap-0'>
-      <div className='flex justify-between items-center mb-6 sm:mb-12'>
-        <h1 className='text-xl sm:text-5xlb tracking-[16px] font-bold uppercase text-white'>Todo</h1>
-        <button onClick={toggleDarkMode}>
-          <img src={isDarkMode ? iconSun : iconMoon}></img>
-        </button>
-      </div>
-
+    <div className='flex flex-col gap-4 md:gap-0'>
       <div className='flex align-middle sm:mb-6 gap-3 sm:gap-6 p-4 sm:p-6 bg-todoListBackground dark:bg-darkTodoListBackground rounded-md'>
         <IconUnChecked
           iconValues={{

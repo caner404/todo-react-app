@@ -18,6 +18,7 @@ export default function TodoFooterButton({
       onClick={onClickHandler}
       data-testid={testId}
       className={className}
+      aria-label={testId}
     >
       <span className={`${isActive ? 'text-blue-600' : ''}`}>{text}</span>
     </button>
