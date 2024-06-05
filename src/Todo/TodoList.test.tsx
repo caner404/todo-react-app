@@ -37,6 +37,7 @@ describe('TodoList', () => {
         onUpdate={mockUpdateTodo}
         isDarkMode={false}
         onClearCompleted={mockOnClearCompleted}
+        updateTodoOrder={mockUpdateTodo}
       />
     );
   });

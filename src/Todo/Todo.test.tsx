@@ -53,7 +53,7 @@ describe('Todo', () => {
     vi.spyOn(todoService, 'loadTodos').mockResolvedValue(todos);
     vi.spyOn(todoService, 'addTodo').mockResolvedValue(newTodo);
     await act(async () => {
-      render(<Todo />);
+      render(<Todo isDarkMode={true} />);
     });
   });
   it('should load the todos on mount', async () => {
